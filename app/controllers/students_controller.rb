@@ -4,7 +4,7 @@ get '/student' do
   if @user && @user.password == params[:password]
     session[:id]=@user.id
     session[:login_type]="student"
-    redirect "/student/#{@user.id}"
+    redirect "/students/#{@user.id}"
   else
     erb :"student"
   end

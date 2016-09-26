@@ -6,7 +6,7 @@
     <% elsif session[:login_type] == "teacher" %>
       <p class="header_name"><%= Teacher.find(session[:id]).display_name %>
     <% end %>
-      <form action="/" method="post">
+      <form action="/sessions/<%= session[:id] %>" method="post">
         <input class="header_button" type="submit" value="logout">
       </form>
   <% else %>
