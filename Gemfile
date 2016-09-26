@@ -7,6 +7,13 @@ gem 'pg'
 gem 'sinatra', '~> 1.0'
 gem 'sinatra-contrib'
 
+# gems Mannah added
+gem 'awesome_print'
+gem 'dotenv'
+gem 'pry-byebug'
+gem 'bcrypt'
+
+
 gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
 
