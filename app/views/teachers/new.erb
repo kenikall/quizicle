@@ -1,0 +1,17 @@
+<h1>Make a new teacher</h1>
+
+<form class="create_form" action="/teacher" method="post">
+  <input type="text" name="user[first_name]" placeholder="first name">
+  <input type="text" name="user[last_name]" placeholder="last name"><br>
+  <select name="user[title]">
+    <option value="Miss">Miss</option>
+    <option value="Ms.">Ms.</option>
+    <option value="Mr.">Mr.</option>
+    <option value="Sir">Sir.</option>
+    <option value="Mrs.">Mrs.</option>
+  </select>
+  <input type="text" name="user[state]" placeholder="state">
+  <input type="password" name="user[password]" placeholder="password">
+  <input type="text" name="user[email]" placeholder="email">
+  <input type="submit" value="create account">
+</form>
