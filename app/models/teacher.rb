@@ -25,7 +25,7 @@ class Teacher < ActiveRecord::Base
   end
 
   def self.authenticate(params = {})
-    @user = User.find_by_email(params[:email])
+    @user = Teacher.find_by_email(params[:email])
     if @user.password == params[:password]
       return @user
     else

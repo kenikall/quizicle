@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>Class</th>
+    <% Teacher.find(sesion[:id].class.each do |class|  %>
+    <tr><h3>class.name</h3></tr>
+    <ul>
+      <% class.student.each do |student| %>
+      <li>
+        <table>
+          <tr>
+            <td>student.name</td>
+            <% student.skill.each do |skill| %>
+            <td>skill.name</td>
+            <td>skill.fluency</td>
+            <td>skill.accuracy</td>
+            <% end %>
+          </tr>
+        </table>
+        <% end %>
+      </li>
+    </ul>
+    <% end  %>
+  </tr>
+</table>

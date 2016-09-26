@@ -1,0 +1,22 @@
+<div id="partial">
+
+  <% if session[:id] %>
+    <% if session[:login_type] == "student" %>
+      <p class="header_name"><%= Student.find(session[:id]).first_name %>
+    <% elsif session[:login_type] == "teacher" %>
+      <p class="header_name"><%= Teacher.find(session[:id]).display_name %>
+    <% end %>
+      <form action="/" method="post">
+        <input class="header_button" type="submit" value="logout">
+      </form>
+  <% else %>
+    <form action="/teacher/new" method="get">
+      <input class="header_button" type="submit" value="create new teacher">
+    </form>
+
+
+    <form action="/sessions/new" method="get">
+      <input class="header_button" type="submit" value="login"></input>
+    </form>
+  <% end %>
+</div>
