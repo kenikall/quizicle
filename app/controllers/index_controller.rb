@@ -1,5 +1,5 @@
 get '/' do
-  erb :'quizzes/new'
+  erb :"/index"
 end
 
 get '/sessions/new' do

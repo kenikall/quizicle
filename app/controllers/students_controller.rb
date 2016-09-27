@@ -1,11 +1,18 @@
 #login student
-get '/student' do
+get '/students' do
   @user = Student.find_by_email(params[:email])
   if @user && @user.password == params[:password]
     session[:id]=@user.id
     session[:login_type]="student"
     redirect "/students/#{@user.id}"
   else
-    erb :"student"
+    erb :"students"
   end
 end
+
+post '/students/guest/:id' do
+    @quiz = Quiz.find(params[:id])
+    @quiz.get_response(params["response"].to_i)
+
+    erb :"students/guest"
+  end
