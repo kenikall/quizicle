@@ -10,7 +10,7 @@
   <tr>
     <td><%=problem.question%></td>
     <td><%=problem.response%></td>
-    <% if problem.correct_answer != problem.response %>
+    <% if !problem.check_answer %>
     <td> X <td>
     <% end %>
   </tr>

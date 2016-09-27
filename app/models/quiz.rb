@@ -19,6 +19,15 @@ class Quiz < ActiveRecord::Base
     problem.response = answer
     problem.save
   end
+
+  def grade_quiz
+    count = 0
+
+    self.problems.each do |problem|
+      count +=1 if problem.check_answer
+    end
+    self.update(score: count.to_f/self.num_questions.to_f)
+  end
 end
 
 def last_problem
