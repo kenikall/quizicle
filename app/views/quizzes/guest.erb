@@ -1,0 +1,4 @@
+<h1>Guest Quiz</h1>
+<h2><%= Subject.find(@quiz.subject_id).name %> quiz results</h2>
+
+<%= erb :"partials/_grade_partial",layout: false %>

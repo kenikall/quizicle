@@ -1,6 +1,3 @@
-<h1>Guest Quiz</h1>
-<h2><%= Subject.find(@quiz.subject_id).name %> quiz results</h2>
-
 <% @quiz.problems.each do |problem|%>
 <table>
   <tr>
@@ -10,7 +7,7 @@
   <tr>
     <td><%=problem.question%></td>
     <td><%=problem.response%></td>
-    <% if problem.correct_answer != problem.response %>
+    <% if !problem.check_answer %>
     <td> X <td>
     <% end %>
   </tr>

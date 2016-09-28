@@ -9,7 +9,7 @@ get '/students' do
     erb :"students"
   end
 end
-
+# Remember all those challenges on being restful?
 post '/students/guest/:id' do
     @quiz = Quiz.find(params[:id])
     @quiz.get_response(params["response"].to_i)
