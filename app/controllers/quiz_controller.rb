@@ -6,7 +6,6 @@ end
 post '/quizzes/guest/:id' do
   @quiz= Quiz.find(params[:id])
   @quiz.get_response(params["response"].to_i)
-  p @quiz.grade_quiz
 
   redirect "/quizzes/guest/#{@quiz.id}"
 end
@@ -21,4 +20,22 @@ get '/quizzes/:id' do
   erb :"quizzes/show"
 end
 
+post '/quizzes/:id' do
+  @quiz = Quiz.find(params[:id])
+  @quiz.get_response(params["response"].to_i)
+  @quiz.grade_quiz
+  if request.xhr?
+    if @quiz.problems.count <= @quiz.num_questions
+      erb :"partials/_question_partial", layout: false
+    else
+      erb :"partials/_grade_partial",layout: false
+    end
+  else
+    if @quiz.problems.count <= @quiz.num_questions
+      erb :"quizzes/show"
+    else
+      redirect "/quizzes/guest/#{@quiz.id}"
+    end
+  end
+end
 
