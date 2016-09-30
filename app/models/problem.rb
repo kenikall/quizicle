@@ -1,4 +1,4 @@
-class Problem < ActiveRecord::Base
+# class Problem < ActiveRecord::Base
   belongs_to :quiz
 
   def solving_time

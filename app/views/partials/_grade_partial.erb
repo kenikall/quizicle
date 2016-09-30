@@ -1,20 +1,38 @@
-<% @quiz.problems.each do |problem|%>
-<table>
+<div>
+<div class="panel panel-default">
+<div class="panel-heading">Math Quiz Results</div>
+  <div class="panel-body">
+  <h6>CCSS.MATH.CONTENT.3.NBT.A.3</h6>
+  <em>Multiply one-digit whole numbers by multiples of 10 in the range 10-90 (e.g., 9 × 80, 5 × 60) using strategies based on place value and properties of operations.</em>
+<table class="table table-condensed col-md-4">
+<tbody class="table-striped">
   <tr>
    <th>Problem</th>
    <th>Your Response</th>
   </tr>
-  <tr>
-    <td><%=problem.question%></td>
+<% @quiz.problems.each do |problem|%>
+  <tr class="table-hover">
+    <td style="width:100px"><%=problem.question%> = </td>
     <td><%=problem.response%></td>
-    <% if !problem.check_answer %>
-    <td> X <td>
-    <% end %>
+    <% if problem.check_answer %>
+    <td style="width:1600px"> <span class="glyphicon glyphicon-remove-circle" style="color:red"> </span> <td>
+    <% else %>
+    <td style="width:1600px"> <span class="glyphicon glyphicon-ok-circle green" style="color:green"> </span></td>
   </tr>
-</table>
+    <% end %>
 <%end  %>
+</tbody>
+</table>
 <h3>Your score is <%= @quiz.score %></h3>
+<% max = @quiz.num_questions  %>
+<% percent = (@quiz.score/@quiz.num_questions)*100  %>
+<div class="progress">
+  <div  class="progress-bar" role="progressbar" aria-valuenow="<%= percent %>" aria-valuemin="0" aria-valuemax="<%= max %>" style="width: <%= percent %>%;">
+    <span><%= percent %>% </span>
+  </div>
+</div>
 <h3>Your fluency is <%=(@quiz.updated_at-@quiz.created_at)/@quiz.num_questions%></h3>
 <form action="students/new" method="get">
   <input type="submit" value="create an account to track your results">
 </form>
+</div>
