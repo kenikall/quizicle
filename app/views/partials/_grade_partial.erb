@@ -37,7 +37,7 @@
 <h3>The average time to answer was <%=(@quiz.updated_at-@quiz.created_at)/@quiz.problems.count%> seconds</h3>
 
 <% if session[:id] %>
-<form action="/students/#{session[:id]}" method="get">
+<form action="/students/<%=session[:id]%>" method="get">
   <input type="submit" value="track your pogress">
 </form>
 <% else %>
