@@ -1,20 +1,48 @@
-<% @quiz.problems.each do |problem|%>
-<table>
+<div>
+<div class="panel panel-default">
+<div class="panel-heading">Math Quiz Results</div>
+  <div class="panel-body">
+  <h6>CCSS.MATH.CONTENT.3.NBT.A.3</h6>
+  <em>Multiply one-digit whole numbers by multiples of 10 in the range 10-90 (e.g., 9 × 80, 5 × 60) using strategies based on place value and properties of operations.</em>
+<table class="table table-condensed col-md-4">
+<tbody class="table-striped">
   <tr>
    <th>Problem</th>
    <th>Your Response</th>
   </tr>
-  <tr>
-    <td><%=problem.question%></td>
+  <%count = 0  %>
+<% @quiz.problems.each do |problem|%>
+  <tr class="table-hover">
+    <td style="width:100px"><%=problem.question%> = </td>
     <td><%=problem.response%></td>
-    <% if !problem.check_answer %>
-    <td> X <td>
+    <% if problem.response == problem.correct_answer %>
+      <td style="width:1600px"> <span class="glyphicon glyphicon-ok-circle green" style="color:green"> </span></td>
+      <% count +=1  %>
+    <% else %>
+      <td style="width:1600px"> <span class="glyphicon glyphicon-remove-circle" style="color:red"> </span> <td>
     <% end %>
   </tr>
+<% end %>
+</tbody>
 </table>
-<%end  %>
-<h3>Your score is <%= @quiz.score %></h3>
-<h3>Your fluency is <%=(@quiz.updated_at-@quiz.created_at)/@quiz.num_questions%></h3>
-<form action="students/new" method="get">
+<%= score = count.to_f/(@quiz.problems.count) *100 %>
+<h3>Your score is <%= score %></h3>
+<% max = @quiz.problems.count  %>
+<% score*100  %>
+<div class=" col-md-4 progress">
+  <div  class="progress-bar" role="progressbar" aria-valuenow="<%= score %>" aria-valuemin="0" aria-valuemax="<%= max %>" style="width: <%= score %>%;">
+    <span><%= score %>% </span>
+  </div>
+</div><br>
+<h3>The average time to answer was <%=(@quiz.updated_at-@quiz.created_at)/@quiz.problems.count%> seconds</h3>
+
+<% if session[:id] %>
+<form action="/students/show" method="post">
+  <input type="submit" value="track your pogress">
+</form>
+<% else %>
+<form action="/students" method="post">
   <input type="submit" value="create an account to track your results">
 </form>
+<% end %>
+</div>

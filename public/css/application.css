@@ -1,0 +1,13 @@
+.btn {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
+
+body{
+  background-color: #ebebe0;
+}
+
+table{
+  background-color: #f5f5f0;
+}

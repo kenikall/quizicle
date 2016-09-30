@@ -1,9 +1,14 @@
-<h1>Good Luck!</h1>
+<% if Subject.find(@quiz.subject_id).name == "math" %>
+  <h2 class="page-header">Try some times tables</h2>
+<% elsif Subject.find(@quiz.subject_id).name == "geography" %>
+  <h2 class="page-header">Can you identify these state capitals?</h2>
+<% end %>
 
-<%= Subject.find(@quiz.subject_id).name %><br>
+<% if  %>
+  <%= erb :"partials/_math_partial"  %>
+<% else %>
+  <%= erb :"partials/_geography_partial"  %>
+<% end %>
 
-<div class="question">
-  <%= erb :"partials/_question_partial"  %>
-</div>
 
 

@@ -1,5 +1,5 @@
 get '/quizzes/show' do
-  @quiz = Quiz.create(num_questions: 10, subject_id: Subject.find_by(name: "math").id)
+  @quiz = Quiz.create(num_questions: 3, subject_id: Subject.find_by(name: "math").id)
   redirect "/quizzes/#{@quiz.id}"
 end
 

@@ -26,7 +26,7 @@ class Quiz < ActiveRecord::Base
     self.problems.each do |problem|
       count +=1 if problem.check_answer
     end
-    self.update(score: count.to_f/self.num_questions.to_f)
+    self.update(score: count.to_f/(self.num_questions+1).to_f)
   end
 end
 
