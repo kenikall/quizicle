@@ -1,4 +1,4 @@
-require 'faker'
+
 
 Subject.destroy_all
 
