@@ -1,0 +1,26 @@
+<h2 class="page-header">  <%=@student.first_name %>'s Quizzes </h2>
+<% @quizzes = Quiz.all  %>
+
+<div class="panel panel-default">
+ <div class="panel-body">
+<table>
+  <% @quizzes.each do |quiz| %>
+  <tr>date: <%= quiz.created_at.to_date %>     subject: Math <%= quiz.score * 100%>% <br>
+
+  </tr>
+  <%quiz.problems.each do |problem|  %>
+  <tr>
+  <%= problem.question %> = <%= problem.response %>
+    <% if problem.response == problem.correct_answer %>
+      <span class="glyphicon glyphicon-ok-circle green" style="color:green"> </span>
+    <% else %>
+      <span class="glyphicon glyphicon-remove-circle" style="color:red"></span>
+    <% end %>
+  </tr>
+  <% end %>
+  <br>
+  <% end %>
+</table>
+</div>
+</div>
+ <p><a class="btn btn-primary btn-lg" href="/quizzes/show" role="button">Take Another Quiz!</a></p>
